@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QA Demo Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 460px; margin: 60px auto; }
+    label, input, button { display: block; margin: 12px 0; }
+    input { padding: 8px; width: 95%; }
+    button { padding: 9px 16px; cursor: pointer; }
+    #message { margin-top: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>QA Demo Portal</h1>
+  <form id="login-form">
+    <label for="username">Username</label>
+    <input id="username" name="username" autocomplete="off">
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password">
+    <button id="login-button" type="submit">Sign in</button>
+  </form>
+  <p id="message" role="status" aria-live="polite"></p>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const message = document.getElementById('message');
+      if (user === 'qauser' && pass === 'Pass123!') {
+        message.textContent = 'Login successful';
+        message.dataset.result = 'success';
+      } else {
+        message.textContent = 'Invalid username or password';
+        message.dataset.result = 'error';
+      }
+    });
+  </script>
+</body>
+</html>
